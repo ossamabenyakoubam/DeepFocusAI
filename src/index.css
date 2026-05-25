@@ -1,0 +1,75 @@
+/* ============================================================
+   DeepFocusAI — Global Styles
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Glass panels */
+  --glass-bg:        rgb(255 255 255 / 0%);
+  --glass-bg2:      rgba(28, 23, 16, 0.75);
+  --glass-border:   rgba(255, 255, 255, 0.11);
+  --glass-border2:  rgba(255, 255, 255, 0.22);
+
+  /* Text */
+  --text:     #f2ede6;
+  --muted:    rgba(242, 237, 230, 0.50);
+  --muted2:   rgba(242, 237, 230, 0.28);
+
+  /* Accent */
+  --accent:   #e8d5b0;
+
+  /* Scratchpad (light surface) */
+  --sp-bg:     rgba(248, 244, 235, 0.97);
+  --sp-text:   #2a2318;
+  --sp-muted:  #8a7e6a;
+  --sp-border: rgba(0, 0, 0, 0.08);
+
+  /* Semantic */
+  --green: #5a9e7a;
+  --red:   #c46b6b;
+
+  /* Typography */
+  --font-sans:  'DM Sans', system-ui, sans-serif;
+  --font-mono:  'DM Mono', 'Fira Mono', monospace;
+  --font-serif: 'DM Serif Display', Georgia, serif;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text);
+  background: #100d0a;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font-family: var(--font-sans);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+
+/* Utilities */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}

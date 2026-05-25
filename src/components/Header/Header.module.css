@@ -1,0 +1,91 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.sep {
+  width: 1px;
+  height: 30px;
+  background: rgba(255,255,255,0.18);
+  flex-shrink: 0;
+}
+
+/* Clock — big, exactly like screenshot */
+.clockBlock {
+  text-align: left;
+  flex-shrink: 0;
+}
+.clockTime {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--text);
+  letter-spacing: 2px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.clockDate {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 3px;
+  line-height: 1;
+}
+.logo { display: flex; align-items: center; gap: 10px; }
+.logoIcon { width: 34px; height: 34px; border-radius: 9px; background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; font-size: 16px; backdrop-filter: blur(8px); }
+.logoName { font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: 0.2px; }
+.logoSub { font-size: 9px; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-top: 1px; }
+.clockBlock { text-align: center; }
+.clockTime { font-family: var(--font-mono); font-size: 30px; font-weight: 300; color: var(--text); letter-spacing: 2px; font-variant-numeric: tabular-nums; }
+.clockDate { font-size: 11px; color: var(--muted); letter-spacing: 1.5px; margin-top: 2px; text-transform: uppercase; }
+.actions { display: flex; align-items: center; gap: 8px; }
+.btn { display: flex; align-items: center; gap: 6px; padding: 7px 13px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); border-radius: 8px; color: var(--text); font-size: 11.5px; font-weight: 400; letter-spacing: 0.3px; backdrop-filter: blur(10px); transition: background 0.15s, border-color 0.15s; cursor: pointer; font-family: var(--font-sans); }
+.btn:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.28); }
+
+/* ── Language flag dropdown ── */
+.langWrap { position: relative; }
+
+.langToggle {
+  display: flex; align-items: center; gap: 5px;
+  padding: 6px 10px; border-radius: 8px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16);
+  color: var(--text); cursor: pointer; font-family: var(--font-sans);
+  transition: all 0.15s; backdrop-filter: blur(10px);
+}
+.langToggle:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.28); }
+.langToggleOpen { background: rgba(200,169,110,0.12); border-color: rgba(200,169,110,0.35); }
+
+.langFlag { font-size: 16px; line-height: 1; }
+.langCode { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; }
+.langArrow { font-size: 8px; opacity: 0.6; }
+
+.langDropdown {
+  position: absolute; top: calc(100% + 6px); right: 0; z-index: 9999;
+  background: rgba(10,8,5,0.97); backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.14); border-radius: 10px;
+  overflow: hidden; min-width: 150px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+}
+
+.langCurrent {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  background: rgba(200,169,110,0.10);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-size: 13px;
+}
+.langOption {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; width: 100%; text-align: left;
+  background: none; border: none; color: var(--text);
+  font-size: 13px; cursor: pointer; font-family: var(--font-sans);
+  transition: background 0.15s;
+}
+.langOption:hover { background: rgba(255,255,255,0.08); }
+.langOptionText { flex: 1; }
+.langCheck { font-size: 11px; color: rgba(200,169,110,0.9); }

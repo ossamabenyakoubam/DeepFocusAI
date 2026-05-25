@@ -1,0 +1,87 @@
+.panel {
+   background: rgb(255 255 255 / 0%);
+  backdrop-filter: blur(30px) saturate(1.5);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+  padding: 10px 13px 13px;
+}
+
+.thumb {
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+  padding: 0;
+  background: none;
+  position: relative;
+}
+.thumb:hover {
+  border-color: rgba(255,255,255,0.40);
+  transform: scale(1.04);
+}
+.thumb.active {
+  border-color: rgba(255,255,255,0.88);
+}
+
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumbPlain {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.addBtn {
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  border: 1.5px dashed rgba(255,255,255,0.20);
+  background: none;
+  color: var(--muted2);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, color 0.15s;
+}
+.addBtn:hover {
+  border-color: rgba(255,255,255,0.45);
+  color: var(--text);
+}
