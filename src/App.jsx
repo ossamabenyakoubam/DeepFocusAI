@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import styles from './App.module.css'
 import Header     from './components/Header/Header.jsx'
 import TaskPanel  from './components/TaskPanel/TaskPanel.jsx'
@@ -23,7 +24,9 @@ export const LANGS = {
     restore: 'Restore',
     /* Language picker */
     languageLabel: 'EN',
+    languageFlag: '',
     switchTo: 'Français',
+    switchFlag: '',
     /* Task panel */
     focusTasks: 'Focus Tasks',
     addTask: 'Add a task...',
@@ -110,15 +113,17 @@ export const LANGS = {
     restore: 'Restaurer',
     /* Language picker */
     languageLabel: 'FR',
+    languageFlag: '',
     switchTo: 'English',
+    switchFlag: '',
     /* Task panel */
     focusTasks: 'Tâches Focus',
     addTask: 'Ajouter une tâche...',
-    autoSaved: '⟳ Sauvegarde locale automatique, backup quotidien conseillé',
+    autoSaved: '⟳ Sauvegarde locale automatique',
     deleteTask: 'Supprimer la tâche',
     noTasks: 'Aucune tâche. Ajoutez-en une !',
     completed: 'terminée',
-    startPause: 'Start / Pause',
+    startPause: 'ESPACE pour démarrer/pause',
     switchModes: '← / → changer de mode',
     /* Timer */
     focus: 'FOCUS',
@@ -211,8 +216,8 @@ export default function App() {
   const [lang,        setLang]        = useState('en')
 
   const [tasks, setTasks] = useLocalStorage('df_tasks', [
-    { id: 1, text: 'Homework time',     done: false },
-    { id: 2, text: 'Learn something new', done: false },
+    { id: 1, text: "Homework time",     done: false },
+    { id: 2, text: "Learn something new", done: false },
   ])
   const timer = useTimer()
 
@@ -230,6 +235,7 @@ export default function App() {
 
   return (
     <div className={styles.root}>
+      <Analytics />
       <div className={styles.bg} style={buildBgStyle(activePreset)} />
       <div className={styles.layout}>
         <Header t={t} lang={lang} setLang={setLang} />
