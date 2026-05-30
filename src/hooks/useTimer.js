@@ -11,7 +11,6 @@ function getAudioCtx() {
   return window._dfAudioCtx
 }
 
-/* 3 quick beeps at start */
 export function playStart() {
   try {
     const ctx = getAudioCtx()
@@ -29,7 +28,6 @@ export function playStart() {
   } catch {}
 }
 
-/* Gentle bell chime at end */
 export function playFinish() {
   try {
     const ctx = getAudioCtx()
@@ -59,9 +57,13 @@ export function useTimer() {
   const [running,  setRunning]  = useState(false)
   const [sessions, setSessions] = useState(0)
   const intervalRef = useRef(null)
-  const endTimeRef  = useRef(null)  // timestamp ms quand le timer finira
+  const endTimeRef  = useRef(null)
+  const sessionsRef = useRef(0)  // ref pour accéder au count dans le setInterval
   const modeId = MODE_IDS[modeIdx]
   const totalSeconds = durations[modeId] * 60
+
+  // Sync sessionsRef avec sessions state
+  useEffect(() => { sessionsRef.current = sessions }, [sessions])
 
   // Reset quand on change de mode ou de durée
   useEffect(() => {
@@ -71,28 +73,35 @@ export function useTimer() {
     endTimeRef.current = null
   }, [modeIdx, durations])
 
-  // Le moteur du timer — basé sur Date.now() pour résister aux onglets en arrière-plan
+  // Le moteur du timer
   useEffect(() => {
     if (!running) { clearInterval(intervalRef.current); return }
 
-    // Sauvegarde l'heure exacte de fin
     endTimeRef.current = Date.now() + seconds * 1000
 
     intervalRef.current = setInterval(() => {
-      // Calcule les secondes restantes depuis l'heure réelle — pas depuis les ticks
       const remaining = Math.round((endTimeRef.current - Date.now()) / 1000)
 
       if (remaining <= 0) {
         clearInterval(intervalRef.current)
-        setRunning(false)
-        setSeconds(durations[modeId] * 60)
         endTimeRef.current = null
         playFinish()
-        if (modeId === 'focus') setSessions(n => n + 1)
+        setRunning(false)
+
+        if (modeId === 'focus') {
+          // Incrémente et calcule le prochain mode
+          const newCount = sessionsRef.current + 1
+          setSessions(newCount)
+          // Toutes les 4 sessions focus → Long Break, sinon → Short Break
+          setModeIdx(newCount % 4 === 0 ? 2 : 1)
+        } else {
+          // Après n'importe quelle pause → retour au Focus
+          setModeIdx(0)
+        }
         return
       }
       setSeconds(remaining)
-    }, 500)  // tick toutes les 500ms — plus précis que 1000ms
+    }, 500)
 
     return () => clearInterval(intervalRef.current)
   }, [running, modeIdx, durations])
