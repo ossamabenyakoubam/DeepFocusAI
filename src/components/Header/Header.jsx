@@ -80,7 +80,7 @@ export default function Header({ t, lang, setLang }) {
 
         <div className={styles.sep} />
 
-        <button className={styles.btn} onClick={exportStats}><ShareIcon /> {t.shareStats}</button>
+        
         <button className={styles.btn} onClick={backup}><DownloadIcon /> {t.backup}</button>
         <button className={styles.btn} onClick={restore}><UploadIcon /> {t.restore}</button>
 

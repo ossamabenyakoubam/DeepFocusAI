@@ -19,7 +19,7 @@ export const LANGS = {
     appName: 'DeepFocusAI',
     appSub: 'Minimalist Focus Workspace',
     /* Header buttons */
-    shareStats: 'Share Stats',
+    
     backup: 'Backup',
     restore: 'Restore',
     /* Language picker */
@@ -108,7 +108,7 @@ export const LANGS = {
     appName: 'DeepFocusAI',
     appSub: 'Espace de travail minimaliste',
     /* Header buttons */
-    shareStats: 'Statistiques',
+    
     backup: 'Sauvegarde',
     restore: 'Restaurer',
     /* Language picker */
@@ -211,7 +211,7 @@ function buildBgStyle(preset) {
 }
 
 export default function App() {
-  const [activeBgId,  setActiveBgId]  = useState('forest')
+  const [activeBgId,  setActiveBgId]  = useState('Gradient')
   const [customBgUrl, setCustomBgUrl] = useState(null)
   const [lang,        setLang]        = useState('en')
 
@@ -229,7 +229,7 @@ export default function App() {
 
   const activePreset = activeBgId === '__custom__'
     ? { id: '__custom__', url: customBgUrl }
-    : BG_PRESETS.find(p => p.id === activeBgId) ?? BG_PRESETS[1]
+    : BG_PRESETS.find(p => p.id === activeBgId) ?? BG_PRESETS[6]
 
   const t = LANGS[lang]
 
